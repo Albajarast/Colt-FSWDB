@@ -40,4 +40,6 @@ body {
 
 .scrolled {
   background-color: #a5d7f5;
+  transition: all 500ms;
+  box-shadow: 0 0 16px -8px #4a7088;
 }
