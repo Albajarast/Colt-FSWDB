@@ -3,7 +3,41 @@ body {
   font-family: 'Nunito', sans-serif;
 }
 
-.nav-link {
+#mainNavbar .navbar-brand {
+  color: #EA1C2C;
+  font-weight: 800;
+  font-size: 1.5rem;
+}
+
+#mainNavbar .navbar-brand .white-slash {
+  color: white;
+  font-weight: 300;
+}
+
+#mainNavbar .nav-link {
   text-transform: uppercase;
   font-weight: 300;
+  color: white;
+}
+
+#mainNavbar .nav-link:hover {
+  color: #EA1C2C;
+}
+
+.red-slash {
+  color: #EA1C2C;
+  font-weight: 300;
+}
+
+.moc-name {
+  font-weight: 800;
+  color: white;
+}
+
+.red-filter {
+  filter: brightness(50%) sepia(100) saturate(100) hue-rotate(25deg);
+}
+
+.scrolled {
+  background-color: #a5d7f5;
 }
