@@ -135,8 +135,8 @@ prices2.reduce((min, price) => {
 
 // Arrow functions and this keyword
 const person3 = {
-  firstName: "David",
-  lastName: "López Albajara",
+  firstName: "Pepe",
+  lastName: "Speedy González",
   fullName: function () {
     return `${this.firstName} ${this.lastName}`;
   },
@@ -146,3 +146,7 @@ const person3 = {
     }, 3000);
   },
 };
+
+function sum() {
+  console.log(arguments);
+}
