@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Score Keeper!</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css" integrity="sha256-WLKGWSIJYerRN8tbNGtXWVYnUM5wMJTXD8eG4NtGcDM=" crossorigin="anonymous">
+</head>
+
+<body>
+
+  <main class="section">
+
+    <div class="columns">
+      <div class="column is-half is-offset-one-quarter">
+        <div class="card">
+          <div class="card-image">
+            <img class="" src="img/pexels-photo-976873-m.jpeg" alt="A ping pong racket and a ball shitting on a table">
+          </div>
+          <div class="card-header">
+            <h3 class="card-header-title">Ping Pong Score Keeper</h3>
+          </div>
+          <div class="card-content">
+            <div class="content">
+              <h2 class="title is-2"><span id="scoreP1">0</span> to <span id="scoreP2">0</span></h2>
+              <p>Use the buttons bellow to keep your scores</p>
+            </div>
+
+            <form action="">
+              <label for="games" class="label is-medium is-inline">
+                <strong>Playing to: </strong>
+              </label>
+              <div class="select is-rounded">
+                <select name="games" id="games">
+                  <option value="1">1 Game</option>
+                  <option value="2">2 Games</option>
+                  <option value="3">3 Games</option>
+                  <option value="4">4 Games</option>
+                  <option value="5">5 Games</option>
+                  <option value="6">6 Games</option>
+                  <option value="7">7 Games</option>
+                  <option value="8">8 Games</option>
+                  <option value="9">9 Games</option>
+                  <option value="10">10 Games</option>
+                </select>
+              </div>
+            </form>
+          </div>
+
+          <div class="card-footer">
+            <button class="button is-medium card-footer-item is-primary" id='buttonP1'>+1 Player One</button>
+            <button class="button is-medium card-footer-item is-info" id='buttonP2'>+1 Player Two</button>
+            <button class="button is-medium card-footer-item is-danger" id='reset'>Reset</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
