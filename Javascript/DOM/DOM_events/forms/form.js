@@ -18,3 +18,13 @@ function addToList(product, qty) {
   newItem.innerText = `${qty.value} ${product.value}`;
   list.appendChild(newItem);
 }
+
+// form.addEventListener("submit", function (e) {
+//   e.preventDefault();
+//   const product = this.elements.product;
+//   const quantity = this.elements.qty;
+//   addToList(product, quantity);
+//   product.value = "";
+//   quantity.value = "";
+//   document.querySelector("#product").focus();
+// });
