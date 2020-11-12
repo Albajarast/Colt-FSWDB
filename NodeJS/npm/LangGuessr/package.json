@@ -1,0 +1,16 @@
+{
+  "name": "langguessr",
+  "version": "1.0.0",
+  "description": "A language guesser for the string passed as argument when executing the program",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "David López Albajara",
+  "license": "ISC",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "franc": "^5.0.0",
+    "langs": "^2.0.0"
+  }
+}
