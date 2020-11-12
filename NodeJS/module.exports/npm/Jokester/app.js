@@ -7,4 +7,5 @@ jokes.getRandomCNJoke((joke) => {
   // using both packages, give-me-a-joke and colors
   console.log(joke.rainbow);
   console.log(joke.trap);
+  console.log(joke.zebra);
 });
