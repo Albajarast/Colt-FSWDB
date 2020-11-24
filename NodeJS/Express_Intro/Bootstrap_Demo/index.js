@@ -9,12 +9,12 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "/views")); //sets the views directory to the relative path where the index.js is executed
 
 app.get("/", (req, res) => {
-  res.render("home");
+  res.render("home", { name: "Homepage" });
 });
 
 app.get("/rand", (req, res) => {
   const num = Math.floor(Math.random() * 100 + 1);
-  res.render("rand", { random: num });
+  res.render("rand", { random: num, name: "Random number generator" });
 });
 
 app.get("/r/:subreddit", (req, res) => {
@@ -29,7 +29,7 @@ app.get("/r/:subreddit", (req, res) => {
 
 app.get("/cats", (req, res) => {
   const cats = ["Blue", "Rocket", "Monty", "Stephanie", "Winston"];
-  res.render("cats", { cats });
+  res.render("cats", { cats: cats, name: "Cats" });
 });
 
 app.listen(3000, () => {
