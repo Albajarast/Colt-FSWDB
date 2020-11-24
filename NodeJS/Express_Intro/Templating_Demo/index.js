@@ -3,6 +3,8 @@ const path = require("path");
 const app = express();
 const data = require("./data.json");
 
+app.use(express.static("public"));
+
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "/views")); //sets the views directory to the relative path where the index.js is executed
 
