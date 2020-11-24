@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to <%= name %> </title>
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+
+<body>
+  <h1>Browsing the <%= name %> subreddit</h1>
+  <h2><%= description %> </h2>
+  <p><%= subscribers %> total subscribers</p>
+  <hr>
+  <h3>Post:</h3>
+  <hr>
+
+  <section class="post-container">
+    <% for (let post of posts) {%>
+    <article class="post">
+      <p><strong><%= post.title %></strong> - <%= post.author %> </p>
+      <% if (post.img) { %>
+      <img src="<%= post.img %>" alt="">
+      <% } %>
+      <hr>
+    </article>
+    <% } %>
+  </section>
+
+</body>
+
+</html>
