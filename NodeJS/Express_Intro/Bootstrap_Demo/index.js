@@ -20,7 +20,6 @@ app.get("/rand", (req, res) => {
 app.get("/r/:subreddit", (req, res) => {
   const { subreddit } = req.params;
   const subredditData = data[subreddit];
-  console.log(subredditData);
   if (subredditData) {
     res.render("subreddit", { ...subredditData });
   } else {
