@@ -17,7 +17,9 @@ app.get("/rand", (req, res) => {
 
 app.get("/r/:subreddit", (req, res) => {
   const { subreddit } = req.params;
-  res.render("subreddit", { subreddit });
+  const subredditData = data[subreddit];
+  console.log(subredditData);
+  res.render("subreddit", { ...subredditData });
 });
 
 app.get("/cats", (req, res) => {
