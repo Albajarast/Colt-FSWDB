@@ -19,7 +19,11 @@ app.get("/r/:subreddit", (req, res) => {
   const { subreddit } = req.params;
   const subredditData = data[subreddit];
   console.log(subredditData);
-  res.render("subreddit", { ...subredditData });
+  if (subredditData) {
+    res.render("subreddit", { ...subredditData });
+  } else {
+    res.render("notFound", { subreddit });
+  }
 });
 
 app.get("/cats", (req, res) => {
