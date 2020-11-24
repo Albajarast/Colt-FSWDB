@@ -20,24 +20,20 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link" href="/rand">Random Number Generator</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Dropdown
+            Subreddits
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
+            <a class="dropdown-item" href="/r/soccer">Soccer</a>
+            <a class="dropdown-item" href="/r/chickens">Chickens</a>
+            <a class="dropdown-item" href="/r/mightyharvest">Mighty Harvest</a>
           </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">
@@ -47,24 +43,26 @@
     </div>
   </nav>
 
-  <h1>Browsing the <%= name %> subreddit</h1>
-  <h2><%= description %> </h2>
-  <p><%= subscribers %> total subscribers</p>
-  <hr>
-  <h3>Post:</h3>
-  <hr>
+  <div class="container">
+    <h1>Browsing the <%= name %> subreddit</h1>
+    <h2><%= description %> </h2>
+    <p><%= subscribers %> total subscribers</p>
+    <hr>
+    <h3>Post:</h3>
+    <hr>
 
-  <section class="container">
-    <% for (let post of posts) {%>
-    <article class="post">
-      <p><strong><%= post.title %></strong> - <%= post.author %> </p>
-      <% if (post.img) { %>
-      <img src="<%= post.img %>" alt="">
+    <section>
+      <% for (let post of posts) {%>
+      <article class="post">
+        <p><strong><%= post.title %></strong> - <%= post.author %> </p>
+        <% if (post.img) { %>
+        <img src="<%= post.img %>" alt="">
+        <% } %>
+        <hr>
+      </article>
       <% } %>
-      <hr>
-    </article>
-    <% } %>
-  </section>
+    </section>
+  </div>
 
 </body>
 
