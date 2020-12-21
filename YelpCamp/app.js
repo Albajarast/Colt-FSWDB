@@ -23,9 +23,21 @@ app.get("/", (req, res) => {
   res.render("home");
 });
 
+app.use(express.urlencoded({ extended: true }));
+
 app.get("/campgrounds", async (req, res) => {
   const campgrounds = await Campground.find({});
   res.render("campgrounds/index", { campgrounds });
+});
+
+app.post("/campgrounds", async (req, res) => {
+  const newCamp = new Campground(req.body.campground);
+  await newCamp.save();
+  res.redirect(`/campgrounds/${newCamp._id}`);
+});
+
+app.get("/campgrounds/new", (req, res) => {
+  res.render("campgrounds/new");
 });
 
 app.get("/campgrounds/:id", async (req, res) => {
