@@ -8,7 +8,8 @@
 </head>
 
 <body>
-  <h1>All products!</h1>
+
+  <h1><%= category %> Products!</h1>
 
   <ul>
     <% for (let product of products) { %>
@@ -17,6 +18,11 @@
   </ul>
 
   <a href="/products/new">Add a new product</a>
+
+  <% if (category !== 'All') { %>
+  <a href="/products">See all products</a>
+  <% } %>
+
 </body>
 
 </html>
