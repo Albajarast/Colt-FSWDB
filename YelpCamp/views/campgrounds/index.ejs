@@ -4,6 +4,20 @@
 <a href="/campgrounds/new">Add a new campground</a>
 <ul>
   <% for( let campground of campgrounds ) { %>
-  <li><a href="/campgrounds/<%= campground._id %> "> <%= campground.title %> </a></li>
+  <div class="card mb-3">
+    <div class="row">
+      <div class="col-md-4">
+        <img src="<%= campground.image %>" alt="" class="img-fluid">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title"> <%= campground.title %> </h5>
+          <small class="card-text text-muted mb-5"><%= campground.location %> </small>
+          <p class=" card-text"><%= campground.description %> </p>
+          <a href="/campgrounds/<%= campground._id %>" class="btn btn-primary">View campground</a>
+        </div>
+      </div>
+    </div>
+  </div>
   <% } %>
 </ul>
