@@ -9,6 +9,7 @@ const ExpressError = require("./utils/ExpressError");
 //Express Router APP Routes
 const campgrounds = require("./routes/campgrounds");
 const reviews = require("./routes/reviews");
+const { execPath } = require("process");
 
 mongoose.connect("mongodb://localhost:27017/yelp-camp", {
   useNewUrlParser: true,
@@ -28,6 +29,7 @@ app.set("views", path.join(__dirname, "views"));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
+app.use(express.static("public"));
 
 app.engine("ejs", ejsMate);
 
