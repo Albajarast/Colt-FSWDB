@@ -7,6 +7,9 @@ const ejsMate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressError");
 const session = require("express-session");
 const flash = require("connect-flash");
+const passport = require("passport");
+const LocalStrategy = require("passport-local");
+const User = require("./models/user");
 
 //Express Router APP Routes
 const campgrounds = require("./routes/campgrounds");
@@ -45,6 +48,13 @@ const sessionConfig = {
 app.use(session(sessionConfig));
 app.use(flash());
 
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
 // Middleware to pass to all routes the flash message if any
 app.use((req, res, next) => {
   res.locals.success = req.flash("success");
@@ -56,6 +66,12 @@ app.engine("ejs", ejsMate);
 
 app.get("/", (req, res) => {
   res.render("home");
+});
+
+app.get("/fakeuser", async (req, res) => {
+  const user = new User({ email: "david@local.host", username: "David" });
+  const regUser = await User.register(user, "mypwd");
+  res.send(regUser);
 });
 
 app.use("/campgrounds", campgrounds);
