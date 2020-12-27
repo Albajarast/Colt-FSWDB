@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressError");
+const session = require("express-session");
 
 //Express Router APP Routes
 const campgrounds = require("./routes/campgrounds");
