@@ -10,7 +10,6 @@ const session = require("express-session");
 //Express Router APP Routes
 const campgrounds = require("./routes/campgrounds");
 const reviews = require("./routes/reviews");
-const { execPath } = require("process");
 
 mongoose.connect("mongodb://localhost:27017/yelp-camp", {
   useNewUrlParser: true,
