@@ -29,9 +29,11 @@
   </div>
 
   <div class="col-6">
+
+    <% if (currentUser) { %>
     <h3>Leave a review!</h3>
 
-    <form action="/campgrounds/<%= campground._id %>/reviews" method="POST" novalidate class="validated-form">
+    <form action="/campgrounds/<%= campground._id %>/reviews" method="POST" novalidate class="validated-form mb-5">
       <div class="mb-3">
         <label for="rating" class="form-label">Rating:</label>
         <input type="range" name="review[rating]" id="rating" min="0" max="5" class="form-range" required>
@@ -44,19 +46,33 @@
       </div>
       <button type="submit" class="btn btn-success">Submit</button>
     </form>
+    <% } %>
 
-    <div class="mt-5">
+
+    <div>
       <% for( let review of campground.reviews) { %>
-      <div class="mb-3 card">
+      <div class="card mb-3">
+        <div class="card-header">
+          <h5 class="card-title">Rating: <%= review.rating %></h5>
+          <div class="card-subtitle"> By <%= review.author.username %></div>
+        </div>
         <div class="card-body">
-          <h5 class="card-title">Rating: <%= review.rating %> </h5>
-          <p class="card-text"><strong>Review:</strong> <%= review.body %> </p>
+          <p class="card-text">
+            <strong>Review:</strong>
+          </p>
+          <p class="card-text">
+            <%= review.body %>
+          </p>
+        </div>
+        <% if (currentUser && review.author.equals(currentUser._id)) { %>
+        <div class="card-footer text-end">
           <form action="/campgrounds/<%= campground._id %>/reviews/<%= review._id %>?_method=DELETE" method="POST">
             <button type="submit" class="btn btn-sm btn-danger">Delete</button>
           </form>
         </div>
-
+        <% } %>
       </div>
+
       <% } %>
     </div>
   </div>
