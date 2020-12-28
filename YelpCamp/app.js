@@ -58,6 +58,7 @@ passport.deserializeUser(User.deserializeUser());
 
 // Middleware to pass to all routes the flash message if any
 app.use((req, res, next) => {
+  res.locals.currentUser = req.user;
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
   next();
