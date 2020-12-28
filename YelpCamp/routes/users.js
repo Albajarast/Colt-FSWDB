@@ -42,9 +42,14 @@ router.post(
     failureFlash: true,
     failureRedirect: "/login",
   }),
-  async (req, res) => {
-    req.flash("success", "Welcome back");
-    res.redirect("/campgrounds");
+  (req, res) => {
+    const { username } = req.user;
+    // Capitalize the first letter of the username
+    const showUser = username.replace(/^\w/, (c) => c.toUpperCase());
+    req.flash("success", `Welcome back ${showUser}!`);
+    const redirectURL = req.session.returnTo || "/campgrounds";
+    delete req.session.returnTo;
+    res.redirect(redirectURL);
   }
 );
 
