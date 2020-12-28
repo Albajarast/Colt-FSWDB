@@ -1,20 +1,19 @@
 const express = require("express");
-const { models } = require("mongoose");
 const router = express.Router({ mergeParams: true });
 const Campground = require("../models/campgrounds");
 const Review = require("../models/review");
 const catchAsync = require("../utils/catchAsync");
-const ExpressError = require("../utils/ExpressError");
-const { reviewVSchema } = require("../validation_Schemas");
-const { isLoggedIn, isAuthor, validateReview } = require("../middleware");
+const { isLoggedIn, validateReview, isReviewAuthor } = require("../middleware");
 
 router.post(
   "/",
+  isLoggedIn,
   validateReview,
   catchAsync(async (req, res) => {
     const campground = await Campground.findById(req.params.id);
     const review = new Review(req.body.review);
     campground.reviews.push(review);
+    review.author = req.user._id;
     await review.save();
     await campground.save();
     req.flash("success", "A new review has been successfully submited");
@@ -25,6 +24,7 @@ router.post(
 router.delete(
   "/:reviewId",
   isLoggedIn,
+  isReviewAuthor,
   catchAsync(async (req, res) => {
     const { id, reviewId } = req.params;
     await Campground.findByIdAndUpdate(id, { $pull: { reviews: reviewId } });
