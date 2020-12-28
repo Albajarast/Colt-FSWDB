@@ -1,5 +1,6 @@
 <% layout('layouts/boilerplate') %>
 
+<link rel="stylesheet" href="/css/starability.css">
 
 <div class="row">
   <div class="col-6">
@@ -35,8 +36,22 @@
 
     <form action="/campgrounds/<%= campground._id %>/reviews" method="POST" novalidate class="validated-form mb-5">
       <div class="mb-3">
-        <label for="rating" class="form-label">Rating:</label>
-        <input type="range" name="review[rating]" id="rating" min="0" max="5" class="form-range" required>
+        <fieldset class="starability-basic">
+          <legend>Rating:</legend>
+          <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="0" checked aria-label="No rating." />
+          <input type="radio" id="rate1" name="review[rating]" value="1" />
+          <label for="rate1" title="Terrible">1 star</label>
+          <input type="radio" id="rate2" name="review[rating]" value="2" />
+          <label for="rate2" title="Not good">2 stars</label>
+          <input type="radio" id="rate3" name="review[rating]" value="3" />
+          <label for="rate3" title="Average">3 stars</label>
+          <input type="radio" id="rate4" name="review[rating]" value="4" />
+          <label for="rate4" title="Very good">4 stars</label>
+          <input type="radio" id="rate5" name="review[rating]" value="5" />
+          <label for="rate5" title="Amazing">5 stars</label>
+        </fieldset>
+        <!-- <label for="rating" class="form-label">Rating:</label>
+        <input type="range" name="review[rating]" id="rating" min="0" max="5" class="form-range" required> -->
       </div>
       <div class="mb-3">
         <div class="form-label"><label for="body">Review</label></div>
@@ -53,8 +68,10 @@
       <% for( let review of campground.reviews) { %>
       <div class="card mb-3">
         <div class="card-header">
-          <h5 class="card-title">Rating: <%= review.rating %></h5>
-          <div class="card-subtitle"> By <%= review.author.username %></div>
+          <p class="starability-result" data-rating="<%= review.rating %>">
+            Rated: 3 stars
+          </p>
+          <div class="card-subtitle"> <%= review.author.username %></div>
         </div>
         <div class="card-body">
           <p class="card-text">
