@@ -7,8 +7,13 @@ module.exports.index = async (req, res) => {
 
 module.exports.create = async (req, res, next) => {
   const newCamp = new Campground(req.body.campground);
+  newCamp.images = req.files.map((file) => ({
+    url: file.path,
+    filename: file.filename,
+  }));
   newCamp.author = req.user._id;
   await newCamp.save();
+  console.log(newCamp);
   req.flash("success", "Successfully made a new campground");
   res.redirect(`/campgrounds/${newCamp._id}`);
 };
