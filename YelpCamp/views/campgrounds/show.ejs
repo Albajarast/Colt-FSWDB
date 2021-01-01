@@ -1,10 +1,15 @@
 <% layout('layouts/boilerplate') %>
 
 <link rel="stylesheet" href="/css/starability.css">
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.0.0/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v2.0.0/mapbox-gl.css' rel='stylesheet' />
+
 
 <div class="row">
   <div class="col-6">
     <div class="card">
+
+      <div id="map" style='width: 100%; height: 300px;'></div>
 
       <div id="carousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
@@ -115,3 +120,10 @@
   </div>
 
 </div>
+
+<script>
+  const mapToken = '<%-process.env.MAPBOX_PB_TOKEN%>';
+  const campground = <%- JSON.stringify(campground) %> ;
+</script>
+
+<script src="/js/campgroundMap.js"></script>
