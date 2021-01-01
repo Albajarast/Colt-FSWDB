@@ -25,7 +25,7 @@ const seedDB = async () => {
     const newCamp = new Campground({
       author: "5fe9a4c2d8c02ea17fbca1ca", // user: david
       location: `${cities[random1000].city}, ${cities[random1000].state}`,
-      geodata: {
+      geometry: {
         type: "Point",
         coordinates: [
           cities[random1000].longitude,

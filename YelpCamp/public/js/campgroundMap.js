@@ -1,5 +1,5 @@
 mapboxgl.accessToken = mapToken;
-const geodata = campground.geodata;
+const geodata = campground.geometry;
 
 var map = new mapboxgl.Map({
   container: "map",

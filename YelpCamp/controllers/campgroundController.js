@@ -12,14 +12,14 @@ module.exports.index = async (req, res) => {
 module.exports.create = async (req, res, next) => {
   const newCamp = new Campground(req.body.campground);
   // Get geolocation data from mapbox
-  const geoData = await geocoder
+  const campGeometry = await geocoder
     .forwardGeocode({
       query: req.body.campground.location,
       limit: 1,
     })
     .send();
   // save to the new campground the geolocation data
-  newCamp.geodata = geoData.body.features[0].geometry;
+  newCamp.geometry = campGeometry.body.features[0].geometry;
   // Append the uploaded images to the new campground
   newCamp.images = req.files.map((file) => ({
     url: file.path,
