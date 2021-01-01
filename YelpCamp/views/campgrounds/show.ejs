@@ -9,7 +9,7 @@
   <div class="col-6">
     <div class="card">
 
-      <div id="map" style='width: 100%; height: 300px;'></div>
+      <div id="map" style="width: 100%; height: 300px;"></div>
 
       <div id="carousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
@@ -123,7 +123,8 @@
 
 <script>
   const mapToken = '<%-process.env.MAPBOX_PB_TOKEN%>';
-  const campground = <%- JSON.stringify(campground) %> ;
+  const campground = <%-JSON.stringify(campground) %> ;
+
 </script>
 
 <script src="/js/campgroundMap.js"></script>
