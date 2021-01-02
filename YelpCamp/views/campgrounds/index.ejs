@@ -2,8 +2,9 @@
 
 <script src="https://api.mapbox.com/mapbox-gl-js/v2.0.0/mapbox-gl.js"></script>
 <link href="https://api.mapbox.com/mapbox-gl-js/v2.0.0/mapbox-gl.css" rel="stylesheet" />
+<link rel="stylesheet" href="/css/maps.css">
 
-<div id="map" style="width: 100%; height: 500px;" class="container-flex"></div>
+<div id="map" class="container-flex cluster-map"></div>
 
 <h1>Campground list</h1>
 <a href="/campgrounds/new">Add a new campground</a>
@@ -33,7 +34,7 @@
 
 <script>
   const mapToken = '<%-process.env.MAPBOX_PB_TOKEN%>';
-  const campgrounds = { features: <%- JSON.stringify(campgrounds) %>}
+  const campgrounds = { features: <%-JSON.stringify(campgrounds) %> }
 
 </script>
 

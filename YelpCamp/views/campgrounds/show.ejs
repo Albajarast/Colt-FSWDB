@@ -3,13 +3,12 @@
 <link rel="stylesheet" href="/css/starability.css">
 <script src='https://api.mapbox.com/mapbox-gl-js/v2.0.0/mapbox-gl.js'></script>
 <link href='https://api.mapbox.com/mapbox-gl-js/v2.0.0/mapbox-gl.css' rel='stylesheet' />
-
+<link rel="stylesheet" href="/css/maps.css">
 
 <div class="row">
   <div class="col-6">
-    <div class="card">
 
-      <div id="map" style="width: 100%; height: 300px;"></div>
+    <div class="card">
 
       <div id="carousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
@@ -55,6 +54,8 @@
   </div>
 
   <div class="col-6">
+
+    <div id="map" class="map mb-5 rounded border"></div>
 
     <% if (currentUser) { %>
     <h3>Leave a review!</h3>
@@ -123,7 +124,7 @@
 
 <script>
   const mapToken = '<%-process.env.MAPBOX_PB_TOKEN%>';
-  const campground = <%-JSON.stringify(campground) %> ;
+  const campground = <%-JSON.stringify(campground) %>;
 
 </script>
 
