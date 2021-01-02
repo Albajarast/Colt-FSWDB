@@ -1,0 +1,6 @@
+.bg-img {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("https://res.cloudinary.com/albajara/image/upload/c_scale,w_1920/v1609582911/YelpCamp/unsplash-photo-1559521783-1d1599583485_kbto9u.jpg");
+  background-size: cover;
+  background-position: center;
+}

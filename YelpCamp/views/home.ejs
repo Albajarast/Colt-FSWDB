@@ -1,5 +1,34 @@
-<% layout('layouts/boilerplate') %>
+<!DOCTYPE html>
+<html lang="en">
 
-<h1>YELP CAMP HOME PAGE</h1>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 
-<a href="/campgrounds">All Campgrounds</a>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="/css/home.css">
+
+</head>
+
+<body>
+  <div class="d-flex flex-column bd-highlight" style="height: 100vh;">
+    <div class="mb-auto">
+      <%- include('partials/navbar') %>
+    </div>
+    <div class="flex-grow-1 d-flex flex-column bg-img">
+      <div class="text-center m-auto container text-white px-5">
+        <h1 class="my-5 px-5">Welcome to YelpCamp</h1>
+        <p class="lead my-5 px-5">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos veniam repellendus quam! Sequi aperiam officia tempora eligendi exercitationem corrupti ducimus cum consectetur, expedita rem quo iure ut laboriosam molestias quaerat!</p>
+        <a href="/campgrounds" class="btn btn-outline-success px-5">View campgrounds</a>
+      </div>
+    </div>
+    <div class="mt-auto">
+      <%- include('partials/footer') %>
+    </div>
+  </div>
+
+</body>
+
+</html>
