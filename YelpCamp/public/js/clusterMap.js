@@ -4,7 +4,7 @@ mapboxgl.accessToken = mapToken;
 //   "pk.eyJ1IjoiYWxiYWphcmEiLCJhIjoiY2tqYmplZTJyNXRpZzJybjRyMnBsZzZzbiJ9.hk8RGJXaoOyshxLTYDgMbg";
 var map = new mapboxgl.Map({
   container: "map",
-  style: "mapbox://styles/mapbox/dark-v10",
+  style: "mapbox://styles/mapbox/light-v10",
   center: [-103.59179687498357, 40.66995747013945],
   zoom: 3,
 });
@@ -38,13 +38,13 @@ map.on("load", function () {
       "circle-color": [
         "step",
         ["get", "point_count"],
-        "#51bbd6",
-        100,
-        "#f1f075",
-        750,
-        "#f28cb1",
+        "#C5E1A5",
+        10,
+        "#66BB6A",
+        50,
+        "#00897B",
       ],
-      "circle-radius": ["step", ["get", "point_count"], 20, 100, 30, 750, 40],
+      "circle-radius": ["step", ["get", "point_count"], 15, 10, 20, 50, 25],
     },
   });
 
@@ -66,7 +66,7 @@ map.on("load", function () {
     source: "campgrounds",
     filter: ["!", ["has", "point_count"]],
     paint: {
-      "circle-color": "#11b4da",
+      "circle-color": "#546E7A",
       "circle-radius": 6,
       "circle-stroke-width": 2,
       "circle-stroke-color": "#fff",
@@ -97,8 +97,7 @@ map.on("load", function () {
   // description HTML from its properties.
   map.on("click", "unclustered-point", function (e) {
     var coordinates = e.features[0].geometry.coordinates.slice();
-    var mag = e.features[0].properties.mag;
-    var tsunami;
+    const popupText = e.features[0].properties.popupMarkup;
 
     if (e.features[0].properties.tsunami === 1) {
       tsunami = "yes";
@@ -113,10 +112,7 @@ map.on("load", function () {
       coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
     }
 
-    new mapboxgl.Popup()
-      .setLngLat(coordinates)
-      .setHTML("magnitude: " + mag + "<br>Was there a tsunami?: " + tsunami)
-      .addTo(map);
+    new mapboxgl.Popup().setLngLat(coordinates).setHTML(popupText).addTo(map);
   });
 
   map.on("mouseenter", "clusters", function () {
